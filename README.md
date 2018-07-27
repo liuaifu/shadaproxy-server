@@ -37,4 +37,4 @@
 
 ## Agent
 Agent部署在目标服务所在机器或可以访问该服务的任何机器上。
-代码地址：[https://github.com/liuaifu/shadaproxy-server](https://github.com/liuaifu/shadaproxy-server)
+代码地址：[https://github.com/liuaifu/shadaproxy-agent](https://github.com/liuaifu/shadaproxy-agent)
