@@ -1,0 +1,20 @@
+<config>
+	<port_for_agent>7789</port_for_agent>
+	<!--目标服务列表，可以配多个服务-->
+	<services>
+		<service>
+			<name>work_rdp</name>
+			<!--与agent端配置的key相同-->
+			<key>1234abcd</key>
+			<!--提供给用户端访问的端口-->
+			<port>13389</port>
+		</service>
+		<!--
+		<service>
+			<name>home_ftp</name>
+			<key>5678</key>
+			<port>10021</port>
+		</service>
+		-->
+	</services>
+</config>
