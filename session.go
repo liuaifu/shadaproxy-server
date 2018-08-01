@@ -5,6 +5,7 @@ import (
 	"log"
 	"net"
 	"sync"
+	"time"
 )
 
 type Session struct {
@@ -157,6 +158,7 @@ func (this *Session) agentLoop() {
 		if this.cnAgent == nil {
 			break
 		}
+		this.cnAgent.SetReadDeadline(time.Now().Add(time.Minute))
 		n, err := this.cnAgent.Read(tmpBuf)
 		if err != nil {
 			log.Printf("agentloop: %s!\n", err.Error())
