@@ -4,6 +4,7 @@ import (
 	"fmt"
 	"log"
 	"net"
+	"time"
 )
 
 type Service struct {
@@ -39,7 +40,8 @@ func (this *Service) loop() {
 		cn, err := this.listener.AcceptTCP()
 		if err != nil {
 			log.Printf("AcceptTCP: %v", err)
-			return
+			time.Sleep(time.Second)
+			continue
 		}
 
 		log.Printf("client(%s) has connected.\n", cn.RemoteAddr())
@@ -58,7 +60,7 @@ func (this *Service) loop() {
 		if session == nil {
 			log.Printf("agent has not connected.\n")
 			cn.Close()
-			return
+			continue
 		}
 
 		session.cnClient = cn
