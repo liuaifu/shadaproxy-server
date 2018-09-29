@@ -1,6 +1,7 @@
 package main
 
 import (
+	"os"
 	"fmt"
 	"log"
 	"net"
@@ -23,11 +24,13 @@ func (this *agent) loop() {
 	addr, err := net.ResolveTCPAddr("tcp", fmt.Sprintf(":%d", this.port))
 	if err != nil {
 		log.Printf("net.ResolveTCPAddr: %v", err)
+		fmt.Fprintln(os.Stderr, err.Error())
 		return
 	}
 	this.listener, err = net.ListenTCP("tcp", addr)
 	if err != nil {
 		log.Printf("net.ListenTCP: %v", err)
+		fmt.Fprintln(os.Stderr, err.Error())
 		return
 	}
 
@@ -37,6 +40,7 @@ func (this *agent) loop() {
 		c, err := this.listener.AcceptTCP()
 		if err != nil {
 			log.Printf("AcceptTCP: %v", err)
+			fmt.Fprintln(os.Stderr, err.Error())
 			return
 		}
 
